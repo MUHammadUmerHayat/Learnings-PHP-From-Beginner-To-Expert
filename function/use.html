@@ -1,0 +1,25 @@
+<html>
+<head>
+  <meta content="text/html;charset=utf-8" http-equiv="Content-Type">
+  <title>Assinging a function to a variable</title>
+</head>
+<body>
+
+<?php
+
+  $var = 'before';
+
+  $f = function($arg) use ($var) {
+     print("var = $var<br>");
+  };
+
+  $var = 'after';
+
+  print("Going to call <code>\$f(42)</code><br>");
+  $f(42);
+
+?>
+
+</body>
+</html>
+

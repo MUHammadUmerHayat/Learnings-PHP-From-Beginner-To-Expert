@@ -1,0 +1,20 @@
+<html>
+<head><title>PDO - SQLite: create db</title></head>
+<body>
+
+<?php
+
+  $dbFile = 'the.db';
+  if (file_exists($dbFile)) {
+     echo("The file <code>$dbFile</code> exists. It is going to be deleted.<p>");
+     unlink($dbFile);
+  }
+
+  $db = new PDO("sqlite:$dbFile");
+
+?>
+
+<a href='02_create_table.html'>create a table</a>
+
+</body>
+</html>
