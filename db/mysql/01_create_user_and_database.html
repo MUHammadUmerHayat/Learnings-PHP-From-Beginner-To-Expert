@@ -1,0 +1,48 @@
+<html>
+<head><title>mysql: Create user</title></head>
+<body>
+
+<?php
+
+  $db_conn = new mysqli('localhost', 'root', 'root');
+
+  if ($db_conn -> connect_errno) {
+    echo "Failed to connect to MySQL: " . $db_conn -> connect_error;
+    return;
+  }
+
+  print "Connected as <code>root</code><br>";
+
+  if (! $db_conn -> query("create user wps@localhost identified by 'wps_secret';") === TRUE) {
+    print ("Could not create user <code>wps@localhost</code>: " . $db_conn -> error);
+//  return;
+  }
+  else {
+    print "User <code>wp@localhost created</code><br>";
+  }
+
+  if (! $db_conn -> query("create database wps_db") === TRUE) {
+    print ("Could not create database <code>wps_db</code>: " . $db_conn -> error);
+//  return;
+  }
+  else {
+    print "Database <code>wps_db</code> created<br>";
+  }
+
+  
+  if (! $db_conn -> query("grant all on wps_db.* to wp;") === TRUE) {
+    print ("Could not grant all on wps_db: " . $db_conn -> error);
+//  return;
+  }
+  else {
+    print "All privileges on <code>wps_db</code> granted<br>";
+  }
+
+  $db_conn -> close();
+
+?>
+
+<p>Now, <a href='02_create_table.html'>create a table</a>.
+
+</body>
+</html>

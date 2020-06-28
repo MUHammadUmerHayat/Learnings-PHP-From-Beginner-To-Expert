@@ -1,0 +1,48 @@
+<html><head><title>preg_replace example with PHP</title></head>
+<body>
+
+<pre>
+
+<?php
+
+  $pattern = '/foo/i';
+  $replace = 'bar';
+  $text    = 'one foo and another FOO to be replaced';
+
+  print "pattern: " . $pattern . "<br>";
+  print "replace: " . $replace . "<br>";
+  print "text:    " . $text    . "<br>";
+  print "result:  " . preg_replace($pattern, $replace, $text);
+
+?>
+
+</pre>
+
+<h2>preg_replace with arrays</h2>
+
+<code>
+<?php
+
+  $text = 'one foo and another FOO to be replaced';
+
+  print "result: " . preg_replace( 
+                           array('/foo/i' ,'/ to be /'),
+                           array( 'bar'   , ' were '  ),
+                           $text);
+
+  print "<p>";
+
+  $text = 'The word is: strawberry';
+
+  #                        Replace from left to right.
+  print "result: " . preg_replace(  
+                           array( '/strawberry/', '@lemon@', '!orange!'),
+                           array(  'lemon'      ,  'orange',  'pear'   ),
+                           $text);
+
+?>
+</code>
+
+<p>See also <a href='preg_match.html'>preg_match.html</a> and <a href='str_replace.html'>str_replace.html</a>.
+
+</body><html>
